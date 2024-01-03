@@ -1,0 +1,44 @@
+import { Stage } from "@react-three/drei";
+import React, { Suspense } from "react";
+import { Modelzoro } from "./Modelzoro";
+import {
+  Center,
+  AccumulativeShadows,
+  RandomizedLight,
+  Environment,
+  OrbitControls,
+} from "@react-three/drei";
+
+const Car = () => {
+  return (
+    <>
+      {/* <Stage environment={"studio"} intensity={0.5}>
+        <Modelzoro />
+      </Stage> */}
+      <group position={[0, -0.75, 0]}>
+        <Center top>
+          <Modelzoro />
+        </Center>
+        <AccumulativeShadows>
+          <RandomizedLight position={[2, 5, 5]} />
+        </AccumulativeShadows>
+      </group>
+
+      <Environment preset="studio" attach={"background"} args={["#212529"]} />  // one
+            <Environment preset="sunset" background blur={1} />  // two
+
+    </>
+  );
+};
+export default Car;
+
+
+  // useEffect(() => {
+  //   const target = baffle(".title");
+  //   target.set({
+  //     characters: "<░░░░>",
+  //     speed: 100,
+  //   });
+  //   target.start();
+  //   target.reveal(1000, 1000);
+  // });
